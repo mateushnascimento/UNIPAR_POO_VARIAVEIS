@@ -1,0 +1,38 @@
+ex. dia 19/03/2024
+
+package br.unipar.main;
+
+import java.util.Scanner;
+
+public class ExempleWhile {
+
+    public static void main(String[] args) {
+
+        boolean contador = false;
+        int cont = 1;
+        int teteus = 0;
+        Scanner scanner = new Scanner(System.in);
+
+
+        while (contador == false) {
+
+            System.out.println("deseja continuar");
+            teteus = scanner.nextInt();
+
+            if (teteus == 1) {
+                cont += 1;
+                if (cont <= 5) {
+                    contador = false;
+
+
+                } else if (cont > 5) {
+                        contador = true;
+
+                }
+            }else{
+                contador = true;
+            }
+        }
+    }
+}
+
