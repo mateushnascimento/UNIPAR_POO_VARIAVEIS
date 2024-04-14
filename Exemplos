@@ -1,0 +1,72 @@
+ex 2.
+
+import java.util.Scanner;
+
+class HelloWorld {
+    public static void main(String[] args) {
+
+        int numero = 0;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Informe o numero: ");
+        numero = scanner.nextInt();
+
+
+        if (numero % 2 ==0) {
+            System.out.println("o numero é par");
+        }else {
+            System.out.println("o numero é impar");
+        }
+
+    }
+}
+
+ex 3.
+
+import java.util.Scanner;
+
+class HelloWorld {
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Digite o usuário: ");
+            String nome = scanner.nextLine();
+
+            System.out.print("Digite a senha: ");
+            String senha = scanner.nextLine();
+
+            if (nome.equals("NascimentoLindo") && senha.equals("senha123")) {
+                System.out.println("Seja bem vindo!");
+            } else {
+                System.out.println("Nome de usuário ou senha incorretos!");
+            }
+        }
+    }
+
+ex 4.
+
+import java.util.Scanner;
+
+class HelloWorld {
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            int numero1 = 0;
+            int numero2 = 0;
+
+            System.out.println("Informe o 1º numero: ");
+            numero1 = scanner.nextInt();
+
+            System.out.println("Informe o 2º numero: ");
+            numero2 = scanner.nextInt();
+
+            if (numero1 > numero2) {
+                System.out.println(" o numero maior é: "+ numero1);
+            }else {
+                System.out.println(" o numero maior é: "+ numero2);
+            }
+        }
+    }
