@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+class HelloWorld {
+    public static void main(String[] args) {
+        
+        int primeiroValor = 0;
+        int segundoValor = 0;
+    
+        
+        Scanner scanner = new Scanner(System.in);
+    
+        System.out.println("Informe a primeira nota: ");
+        primeiroValor = scanner.nextInt();
+        
+        System.out.println("Informe a segunda nota: ");
+        segundoValor = scanner.nextInt();
+        
+        int total = primeiroValor + segundoValor;
+        int media = total / 2;
+        
+        System.out.println("o media total e: " + media);
+        
+    }
+}
