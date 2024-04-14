@@ -1,0 +1,68 @@
+function extrairDadosDaPagina() {
+    var table = document.querySelector("tbody");
+    var csvData = "";
+  
+    for (var i = 0; i < table.rows.length; i++) {
+      var row = table.rows[i];
+  
+      for (var j = 0; j < row.cells.length; j++) {
+        var cell = row.cells[j];
+        var cellValue = cell.textContent.trim();
+  
+        // Adiciona o valor da célula à string CSV
+        csvData += '"' + cellValue + '",';
+      }
+  
+      // Adiciona uma quebra de linha ao final de cada linha da tabela
+      csvData += "\n";
+    }
+  
+    return csvData;
+}
+
+  
+  async function percorrerPaginacao() {
+    var numeroPagina = 1;
+    var csvCompleto = "";
+  
+    while (true) {
+      var csvPagina = extrairDadosDaPagina();
+      csvCompleto += csvPagina;
+  
+      var linkPagina = document.querySelector(`a[id="${numeroPagina}"]`);
+      var botaoProximaPagina = document.querySelector("a.page-link[onclick='controls.next()']");
+  
+      if (!linkPagina && !botaoProximaPagina) {
+        break;
+      }
+  
+      if (linkPagina) {
+        linkPagina.click();
+      } else if (botaoProximaPagina) {
+        botaoProximaPagina.click();
+      }
+  
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      numeroPagina++;
+    }
+  
+    return csvCompleto;
+  }
+  
+  percorrerPaginacao().then(csvCompleto => {
+    // Cria um elemento <a> para fazer o download do arquivo CSV
+    var downloadLink = document.createElement("a");
+    downloadLink.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvCompleto);
+    downloadLink.download = "dados.csv";
+    downloadLink.style.display = "none";
+  
+    // Adiciona o elemento <a> ao corpo da página
+    document.body.appendChild(downloadLink);
+  
+    // Clica no elemento <a> para iniciar o download do arquivo CSV
+    downloadLink.click();
+  
+    // Remove o elemento <a> do corpo da página
+    document.body.removeChild(downloadLink);
+  });
+  
